@@ -7,7 +7,14 @@ export default function Home() {
     <>
       <Header />
       <Blog />
-      <Card />
+      <div className="max-w-304 mx-auto md:grid grid-cols-2 gap-4 lg:grid-cols-3">
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </div>
     </>
   );
 }
