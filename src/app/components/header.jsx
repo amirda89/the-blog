@@ -1,6 +1,6 @@
 export default function Header() {
   return (
-    <div className="max-w-304 p-5 flex items-center justify-between mx-auto xl:mt-7 xl:mb-12 xl:px-0">
+    <header className="max-w-304 p-5 flex items-center justify-between mx-auto xl:mt-7 xl:mb-12 xl:px-0">
       <h3>Your Name</h3>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@ export default function Header() {
         <a href="">Projects</a>
         <a href="">About</a>
         <a href="">Newsteller</a>
-        <div className="flex items-center gap-1 xl:bg-black rounded-3xl p-1">
+        <div className="flex items-center gap-1 xl:bg-black rounded-3xl px-2 py-1">
           <button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -56,6 +56,6 @@ export default function Header() {
           </button>
         </div>
       </div>
-    </div>
+    </header>
   );
 }
