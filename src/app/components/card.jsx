@@ -1,22 +1,25 @@
 import HashTag from "./hashtag";
+import dayjs from "dayjs";
+import stc from "string-to-color";
+import Link from "next/link";
 
-export default function Card({ noImage, noHashTag, noArrow }) {
+export default function Card({ noImage, noArrow, article }) {
   return (
     <div className="mb-8">
       {noImage ? null : (
         <img
-          src="https://images.unsplash.com/photo-1792830047385-1c2cf8493d87"
+          src={article?.social_image}
           alt="img"
           className="aspect-4/3 object-cover block mb-8"
         />
       )}
-      <a href="#">
+      <Link href="#">
         <p className="text-[#6941C6] font-semibold text-sm mb-3">
-          Sunday , 1 Jan 2023
+          {dayjs(article?.published_at).format("dddd , D MMM YYYY")}
         </p>
         <div className="flex justify-between items-center mb-3">
-          <h3 className="text-[#1A1A1A] font-semibold text-[24px]">
-            UX review presentations
+          <h3 className="text-[#1A1A1A] font-semibold text-[24px] dark:text-white">
+            {article?.title}
           </h3>
           {noArrow ? null : (
             <svg
@@ -36,17 +39,12 @@ export default function Card({ noImage, noHashTag, noArrow }) {
           )}
         </div>
         <p className="text-[#667085] font-normal text-md mb-6">
-          How do you create compelling presentations that wow your colleagues
-          and impress your managers?
+          {article?.description}
         </p>
-      </a>
-      {noHashTag ? null : (
-        <>
-          <HashTag text="design" bgColor="#f9f5ff" textColor="#6941C6" />
-          <HashTag text="research" bgColor="#eef4ff" textColor="#3538CD" />
-          <HashTag text="presentation" bgColor="#fdf2fa" textColor="#C11574" />
-        </>
-      )}
+      </Link>
+      {article?.tag_list.map((tag) => (
+        <HashTag text={tag} key={tag} bgColor={stc(tag)} />
+      ))}
     </div>
   );
 }

@@ -1,7 +1,9 @@
+import Link from "next/link";
+
 export default function Header() {
   return (
     <header className="max-w-304 p-5 flex items-center justify-between mx-auto xl:mt-7 xl:mb-12 xl:px-0">
-      <h3>Your Name</h3>
+      <h3>Anna Villarreal</h3>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -17,11 +19,11 @@ export default function Header() {
         />
       </svg>
       <div className="hidden md:flex items-center gap-4">
-        <a href="">Blog</a>
-        <a href="">Projects</a>
-        <a href="">About</a>
-        <a href="">Newsteller</a>
-        <div className="flex items-center gap-1 xl:bg-black rounded-3xl px-2 py-1">
+        <Link href="/">Blog</Link>
+        <Link href="/projects">Projects</Link>
+        <Link href="/about">About</Link>
+        <Link href="/newsteller">Newsteller</Link>
+        <div className="flex items-center gap-1 xl:bg-black rounded-3xl px-2 py-1 dark:bg-white">
           <button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +31,7 @@ export default function Header() {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="size-6 xl:text-white"
+              className="size-6 xl:text-white dark:text-black cursor-pointer hover:bg-gray-500 rounded-full"
             >
               <path
                 strokeLinecap="round"
@@ -45,7 +47,7 @@ export default function Header() {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="size-6 xl:text-white"
+              className="size-6 xl:text-white dark:text-black cursor-pointer hover:bg-gray-500 rounded-full"
             >
               <path
                 strokeLinecap="round"
