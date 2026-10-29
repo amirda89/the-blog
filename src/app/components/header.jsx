@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Header() {
   return (
     <header className="max-w-304 p-5 flex items-center justify-between mx-auto xl:mt-7 xl:mb-12 xl:px-0">
-      <h3>Anna Villarreal</h3>
+      <h3>Gabriel Anhaia</h3>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -19,7 +19,12 @@ export default function Header() {
         />
       </svg>
       <div className="hidden md:flex items-center gap-4">
-        <Link href="/">Blog</Link>
+        <Link
+          className="hover:font-semibold hover:border-b-2 dark:border-white border-black"
+          href="/"
+        >
+          Blog
+        </Link>
         <Link href="/projects">Projects</Link>
         <Link href="/about">About</Link>
         <Link href="/newsteller">Newsteller</Link>

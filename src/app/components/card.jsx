@@ -13,7 +13,7 @@ export default function Card({ noImage, noArrow, article }) {
           className="aspect-4/3 object-cover block mb-8"
         />
       )}
-      <Link href="#">
+      <Link href={`/blog/${article.id}`}>
         <p className="text-[#6941C6] font-semibold text-sm mb-3">
           {dayjs(article?.published_at).format("dddd , D MMM YYYY")}
         </p>
