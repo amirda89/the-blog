@@ -1,9 +1,30 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import MenuItem from "./menuItem";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [theme, setTheme] = useState(() => {
+    if (typeof window === "undefined") return "light";
+    return (
+      localStorage.getItem("theme") ||
+      (window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light")
+    );
+  });
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === "dark") {
+      root.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      root.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [theme]);
 
   return (
     <header className="max-w-304 p-5 flex items-center justify-between mx-auto xl:mt-7 xl:mb-12 xl:px-0 relative">
@@ -30,17 +51,12 @@ export default function Header() {
       </button>
 
       <div className="hidden md:flex items-center gap-4">
-        <Link
-          className="hover:font-semibold hover:border-b-2 dark:border-white border-black"
-          href="/"
-        >
-          Blog
-        </Link>
-        <Link href="/projects">Projects</Link>
-        <Link href="/about">About</Link>
-        <Link href="/newsteller">Newsteller</Link>
+        <MenuItem href="/" text="Blog" />
+        <MenuItem href="/projects" text="Projects" />
+        <MenuItem href="/about" text="About" />
+        <MenuItem href="/newsteller" text="Newsteller" />
         <div className="flex items-center gap-1 xl:bg-black rounded-3xl px-2 py-1 dark:bg-white">
-          <button>
+          <button onClick={() => setTheme("light")}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -56,7 +72,7 @@ export default function Header() {
               />
             </svg>
           </button>
-          <button>
+          <button onClick={() => setTheme("dark")}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -94,7 +110,7 @@ export default function Header() {
             </Link>
 
             <div className="flex items-center gap-2 bg-white text-black rounded-full px-3 py-1.5 mt-4">
-              <button>
+              <button onClick={() => setTheme("light")}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -110,7 +126,7 @@ export default function Header() {
                   />
                 </svg>
               </button>
-              <button>
+              <button onClick={() => setTheme("dark")}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
